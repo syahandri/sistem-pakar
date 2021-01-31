@@ -1,0 +1,53 @@
+.body-background {
+    background-color: #e2e0e0;
+    background-attachment: fixed;
+}
+
+form>div>div>input {
+    border: 0px solid !important;
+    background-color: transparent !important;
+    /* margin-top: -3px; */
+    color: #fff !important;
+}
+
+form>div>div>input:focus {
+    border: 0px solid !important;
+    /* border-color: #2B7873 !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important; */
+    background-color: transparent !important;
+    outline: 0px !important;
+    -webkit-appearance: none !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}
+
+
+.card {
+    background-color: #1f293a;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    opacity: .8;
+}
+
+.info-login {
+    font-weight: 50;
+    text-shadow: 2px 2px 4px #000000;
+    letter-spacing: 2px;
+    color: #ffffff;
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+hr.input {
+    margin-top: -3px;
+    border: 1px solid white;
+    border-radius: 2px;
+} 
+
+::placeholder {
+    color: #fff !important;
+    opacity: .5 !important;
+}
+
+.fa-key, .fa-user {
+    color: #fff;
+}
