@@ -1,0 +1,1 @@
+Sistem Pakar Diagnosis Penyakit Tanaman Bawang Merah Menggunakan Metode Forward Chaining dan Certainty Factor
