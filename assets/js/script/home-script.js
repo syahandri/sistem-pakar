@@ -1,3 +1,4 @@
+// active function when menu is selected
 if ($('.judul').html() == 'Beranda') {
 	$('.beranda').addClass('active');
 } else if ($('.judul').html() == 'Diagnosis Penyakit') {
