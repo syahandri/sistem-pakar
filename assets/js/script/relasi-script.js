@@ -37,9 +37,9 @@ $(function () {
 				})
 			}
 		});
-    }
-    
-    function getGejala() {
+	}
+
+	function getGejala() {
 		$.ajax({
 			url: 'Relasi/getGejala/',
 			type: "post",
@@ -54,9 +54,12 @@ $(function () {
 
 	$('#modal-aturan').on('show.bs.modal', function () {
 		$('.alert').alert('close')
-        $('#select-penyakit').empty()
-        $('#select-gejala').empty()
 		$('#form-aturan')[0].reset()
+		$('#select-penyakit').empty()
+		$('#select-gejala').empty()
+
+		getPenyakit()
+		getGejala()
 	})
 
 	$('#btn-tambah-aturan').on('click', function () {
@@ -66,26 +69,142 @@ $(function () {
 		$('.modal-footer .button-submit').html('<i class="fas fa-save"></i> Simpan');
 
 		$('#modal-aturan').modal('show')
-        getPenyakit()
-        getGejala()
-    })
-    
-    $('#form-aturan').on('submit', function(e) {
-        e.preventDefault()
-        let id_penyakit = $('#select-penyakit').val()
-        let id_gejala = $('#select-gejala').val()
+	})
+
+	$(document).on('click', '.update-aturan', function () {
+		fungsi = 'ubah'
+
+		let id_penyakit = $(this).attr('id')
+		let id_gejala = $(this).attr('data')
+
+		$('.modal-title').html('Ubah data aturan')
+		$('.modal-footer .button-submit').html('<i class="fas fa-pen"></i> Ubah');
+
+		$('#modal-aturan').modal('show')
+
+		$.ajax({
+			url: 'Relasi/aturanById/',
+			data: {
+				id_penyakit: id_penyakit,
+				id_gejala: id_gejala
+			},
+			type: "post",
+			dataType: "JSON",
+			success: function (data) {
+
+				$('#id-aturan').val(data.id_aturan);
+				$('#select-penyakit').val(data.id_penyakit);
+				$('#select-gejala').val(data.id_gejala);
+			}
+		});
+
+
+	})
+
+	function simpan() {
+		let penyakit = $('#select-penyakit option:selected').text()
+		let gejala = $('#select-gejala option:selected').text()
+
+		if (fungsi == 'simpan') {
+
+			$.ajax({
+				url: 'Relasi/tambahAturan/',
+				type: "POST",
+				data: $('#form-aturan').serialize(),
+				dataType: "JSON",
+				success: function (data) {
+
+					if (data['msg'] == 'error') {
+						$('.pesan-error').html(`
+                        <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                            Penyakit <strong>` + penyakit + `</strong> dengan Gejala <strong>` + gejala + `</strong> sudah ada
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>`)
+
+					} else {
+
+						$('#modal-aturan').modal('hide')
+						alert(data['msg'])
+						reloadTable();
+					}
+
+				}
+
+			});
+
+		} else {
+
+			$.ajax({
+				url: 'Relasi/ubahAturan/',
+				type: "POST",
+				data: $('#form-aturan').serialize(),
+				dataType: "JSON",
+				success: function (data) {
+
+					if (data['msg'] == 'error') {
+						$('.pesan-error').html(`
+                        <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                            Penyakit <strong>` + penyakit + `</strong> dengan Gejala <strong>` + gejala + `</strong> sudah ada
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>`)
+
+					} else {
+
+						$('#modal-aturan').modal('hide')
+						alert(data.msg)
+						reloadTable();
+					}
+				}
+
+			});
+		}
+	}
+
+
+    $(document).on('click', '.delete-aturan', function() {
+        let id_penyakit = $(this).attr('id');
+        let id_gejala = $(this).attr('data')
         
-        if (id_penyakit == 0 || id_gejala ==0) {
-            $('.pesan-error').html(`
+        // console.log(id_penyakit)
+        // console.log(id_gejala)
+        let warn = confirm('Yakin data akan dihapus?')
+		if (warn == true) {
+
+			$.ajax({
+				url: "Relasi/hapusAturan/",
+				data: {
+					id_penyakit: id_penyakit,
+					id_gejala: id_gejala
+				},
+				type: "POST",
+				dataType: "JSON",
+				success: function (data) {
+					alert(data.msg)
+					reloadTable()
+				}
+			});
+		}
+    })
+
+	$('#form-aturan').on('submit', function (e) {
+		e.preventDefault()
+		let id_penyakit = $('#select-penyakit').val()
+		let id_gejala = $('#select-gejala').val()
+
+		if (id_penyakit == 0 || id_gejala == 0) {
+			$('.pesan-error').html(`
                     <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
                         <strong>Pilih Penyakit dan Gejala-nya!</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>`)
-        } else {
-            // console.log(id_penyakit)
-            // console.log(id_gejala)
-        }
-    })
+		} else {
+			simpan()
+		}
+	})
 })

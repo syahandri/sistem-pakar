@@ -149,13 +149,13 @@ class Gejala extends CI_Controller
         } else {
 
             $this->Gejala_Model->ubahGejala($this->input->post('id-gejala'), $this->input->post('gejala'), $this->input->post('cf'));
-            echo json_encode($data = ['msg' => 'Data berhasil diubah']);
+            echo json_encode($data = ['msg' => 'Data berhasil diubah.']);
         }
     }
 
     public function hapusGejala() {
         $this->Gejala_Model->hapusGejala($this->input->post('id_gejala'));
-        echo json_encode($data = ['msg' => 'Data berhasil dihapus']);
+        echo json_encode($data = ['msg' => 'Data berhasil dihapus.']);
 
     }
 }

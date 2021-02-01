@@ -106,7 +106,7 @@ class Penyakit extends CI_Controller {
         } else {
 
             $this->Penyakit_Model->tambahPenyakit($this->input->post('id-penyakit'), $this->input->post('nama-penyakit'), $this->input->post('solusi'));
-            echo json_encode($data = ['msg' => 'Data berhasil ditambahkan']);
+            echo json_encode($data = ['msg' => 'Data berhasil ditambahkan.']);
         }
         
     }
@@ -151,13 +151,13 @@ class Penyakit extends CI_Controller {
         } else {
 
             $this->Penyakit_Model->ubahPenyakit($this->input->post('id-penyakit'), $this->input->post('nama-penyakit'), $this->input->post('solusi'));
-            echo json_encode($data = ['msg' => 'Data berhasil diubah']);
+            echo json_encode($data = ['msg' => 'Data berhasil diubah.']);
         }
     }
 
     public function hapusPenyakit() {
         $this->Penyakit_Model->hapusPenyakit($this->input->post('id_penyakit'));
-        echo json_encode($data = ['msg' => 'Data berhasil dihapus']);
+        echo json_encode($data = ['msg' => 'Data berhasil dihapus.']);
 
     }
 }

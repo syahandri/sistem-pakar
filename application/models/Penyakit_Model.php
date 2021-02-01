@@ -85,15 +85,16 @@ class Penyakit_Model extends CI_Model {
         $this->db->update('tblpenyakit', $data);
     }
 
-    function hapusPenyakit($id_penyakit) {
+    public function hapusPenyakit($id_penyakit) {
         $this->db->delete('tblpenyakit', ['id_penyakit' => $id_penyakit]);
     }
 
-    function check_penyakit ($id_penyakit = '', $nama_penyakit) {
+    public function check_penyakit ($id_penyakit = '', $nama_penyakit) {
         $this->db->where('nama_penyakit', $nama_penyakit);
         if ($id_penyakit) {
             $this->db->where_not_in('id_penyakit', $id_penyakit);
         }
         return $this->db->get('tblpenyakit')->num_rows();
     }
+
 }

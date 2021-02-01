@@ -65,4 +65,44 @@ class Relasi_Model extends CI_Model {
                  ->from('tblgejala');
         return $this->db->get()->result_array();
     }
+
+    public function checkData($id_penyakit, $id_gejala) {
+        $this->db->select('id_penyakit, id_gejala')
+                 ->from('tblaturan')
+                 ->where('id_penyakit', $id_penyakit)
+                 ->where('id_gejala', $id_gejala);
+        return $this->db->get()->num_rows();
+    }
+
+    public function aturanById($id_penyakit, $id_gejala) {
+        $this->db->from('tblaturan')
+                 ->where('id_penyakit', $id_penyakit)
+                 ->where('id_gejala', $id_gejala);
+        return $this->db->get()->row();
+    }
+
+    public function tambahAturan($id_penyakit, $id_gejala) {
+        $data = [
+            'id_penyakit' => $id_penyakit,
+            'id_gejala' => $id_gejala,
+        ];
+
+        $this->db->insert('tblaturan', $data);
+    }
+
+    public function ubahAturan($id_aturan, $id_penyakit, $id_gejala) {
+        $data = [
+            'id_penyakit' => $id_penyakit,
+            'id_gejala' => $id_gejala
+        ];
+
+        $this->db->where('id_aturan', $id_aturan);
+        $this->db->update('tblaturan', $data);
+    } 
+
+    public function hapusAturan($id_penyakit, $id_gejala) {
+        $this->db->where('id_penyakit', $id_penyakit);
+        $this->db->where('id_gejala', $id_gejala);
+        $this->db->delete('tblaturan');
+    }
 }

@@ -37,6 +37,8 @@
 						<div class="col-12">
 
 							<div class="pesan-error"></div>
+
+                            <input type="hidden" id="id-aturan" name="id-aturan">
 							<div class="form-group">
 								<label for="select-penyakit"> Penyakit </label>
 								<select class="custom-select" id="select-penyakit" name="select-penyakit">

@@ -142,7 +142,7 @@ $(function() {
         }
     }
 
-    $(document).on('click', '.delete-ggiejala', function() {
+    $(document).on('click', '.delete-gejala', function() {
         let id = $(this).attr('id');
         
         let warn = confirm('Yakin data akan dihapus?')
