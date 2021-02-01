@@ -74,4 +74,3 @@
 		</div>
 	</div>
 </div><!-- /.modal -->
-<!-- End Bootstrap modal -->
