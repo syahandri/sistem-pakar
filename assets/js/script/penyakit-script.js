@@ -163,7 +163,6 @@ $(function() {
 		}
     })
 
-
     $('#form-penyakit').on('submit', function(e) {
         e.preventDefault()
         simpan()
