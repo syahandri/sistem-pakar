@@ -1,16 +1,16 @@
 <div class="container-fluid">
-	<button class="btn btn-primary mt-3 mb-3" id="btn-tambah-gejala"><i class="fas fa-plus"></i> Tambah
-		Gejala</button>
+	<button class="btn btn-primary mt-3 mb-3" id="btn-tambah-penyakit"><i class="fas fa-plus"></i> Tambah
+		Data Penyakit</button>
 
 	<div class="row">
 		<div class="col">
-			<table class="table display responsive nowrap table-striped" style="width:100%" id="table-gejala">
+			<table class="table display responsive wrap table-striped" style="width:100%" id="table-penyakit">
 				<thead class="thead-dark">
 					<tr>
 						<th>#</th>
-						<th>Kode Gejala</th>
-						<th>Gejala</th>
-						<th>CF Rule</th>
+						<th>Kode Penyakit</th>
+						<th>Nama Penyakit</th>
+						<th>Solusi</th>
 						<th>Opsi</th>
 					</tr>
 				</thead>
@@ -20,8 +20,8 @@
 </div>
 
 
-<!-- Bootstrap modal Data Gejala-->
-<div class="modal fade" id="modal-gejala" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<!-- Bootstrap modal Data Penyakit-->
+<div class="modal fade" id="modal-penyakit" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1"
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -31,24 +31,24 @@
 					<span aria-hidden="true">&times;</span></button>
 			</div>
 			<div class="modal-body">
-				<form action="" method="post" id="form-gejala">
+				<form action="" method="post" id="form-penyakit">
 					<div class="row">
 						<div class="col-12">
-						
-						<div class="pesan-error"></div>
+
+							<div class="pesan-error"></div>
 							<div class="form-group">
-								<label for="id-gejala"> ID Gejala </label>
-								<input type="text" class="form-control" id="id-gejala" name="id-gejala" maxlength="7"
-									required>
+								<label for="id-penyakit"> Kode penyakit </label>
+								<input type="text" class="form-control" id="id-penyakit" name="id-penyakit"
+									maxlength="7" required>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-12">
 							<div class="form-group">
-								<label for="gejala"> Gejala </label>
-								<input type="text" class="form-control" id="gejala" name="gejala" maxlength="30"
-									required oninvalid="this.setCustomValidity('Harap isi bidang ini')"
+								<label for="nama-penyakit"> Nama Penyakit </label>
+								<input type="text" class="form-control" id="nama-penyakit" name="nama-penyakit"
+									maxlength="30" required oninvalid="this.setCustomValidity('Harap isi bidang ini')"
 									oninput="setCustomValidity('')">
 							</div>
 						</div>
@@ -56,14 +56,10 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="form-group">
-								<label for="cf"> Nilai CF </label>
-								<select class="custom-select form-control" id="cf" name="cf">
-									<option value=0.2>0.2</option>
-									<option value=0.4>0.4</option>
-									<option value=0.6>0.6</option>
-									<option value=0.8>0.8</option>
-									<option value=1>1</option>
-								</select>
+								<label for="solusi"> Solusi </label>
+								<textarea class="form-control" id="solusi" name="solusi" rows="3" required
+									oninvalid="this.setCustomValidity('Harap isi bidang ini')"
+									oninput="setCustomValidity('')"></textarea>
 							</div>
 						</div>
 					</div>

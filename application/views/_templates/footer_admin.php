@@ -33,6 +33,8 @@
 <!-- Script -->
 <script src="<?= base_url(); ?>assets/js/script/home-script.js"></script>
 <script src="<?= base_url(); ?>assets/js/script/gejala-script.js"></script>
+<script src="<?= base_url(); ?>assets/js/script/penyakit-script.js"></script>
+<script src="<?= base_url(); ?>assets/js/script/relasi-script.js"></script>
 </body>
 
 </html>

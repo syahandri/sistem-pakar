@@ -1,14 +1,15 @@
 <?php
 
-class Gejala_Model extends CI_Model {
+class Penyakit_Model extends CI_Model {
+
     // variabel pagination datatables
-    var $column_order = [null, 'id_gejala', 'nama_gejala', 'cf_rule', null];
-    var $column_search = ['id_gejala', 'nama_gejala', 'cf_rule',];
-    var $order = ['id_gejala' => 'asc'];
+    var $column_order = [null, 'id_penyakit', 'nama_penyakit', 'solusi', null];
+    var $column_search = ['id_penyakit', 'nama_penyakit', 'solusi'];
+    var $order = ['id_penyakit' => 'asc'];
 
     // datatables
     private function _get_datatables_query() {
-        $this->db->from('tblgejala');
+        $this->db->from('tblpenyakit');
 
         $i = 0;
         foreach ($this->column_search as $item) {
@@ -49,50 +50,50 @@ class Gejala_Model extends CI_Model {
     }
 
     public function countAll() {
-        $this->db->from('tblgejala');
+        $this->db->from('tblpenyakit');
         return $this->db->count_all_results();
     }
 
     public function idOtomatis () {
-        $this->db->select_max('id_gejala');
-        return $this->db->get('tblgejala')->row_array();
+        $this->db->select_max('id_penyakit');
+        return $this->db->get('tblpenyakit')->row_array();
     }
 
-    public function gejalaById ($id_gejala) {
-        $this->db->from('tblgejala');
-        $this->db->where('id_gejala', $id_gejala);
+    public function penyakitById ($id_penyakit) {
+        $this->db->from('tblpenyakit');
+        $this->db->where('id_penyakit', $id_penyakit);
         return $this->db->get()->row();
     }
 
-    public function tambahGejala($id_gejala, $nama_gejala, $cf_rule) {
+    public function tambahPenyakit($id_penyakit, $nama_penyakit, $solusi) {
         $data = [
-            'id_gejala' => $id_gejala,
-            'nama_gejala' => $nama_gejala,
-            'cf_rule' => $cf_rule
+            'id_penyakit' => $id_penyakit,
+            'nama_penyakit' => $nama_penyakit,
+            'solusi' => $solusi
         ];
 
-        $this->db->insert('tblgejala', $data);
+        $this->db->insert('tblpenyakit', $data);
     }
 
-    public function ubahGejala($id_gejala, $nama_gejala, $cf_rule) {
+    public function ubahPenyakit($id_penyakit, $nama_penyakit, $solusi) {
         $data = [
-            'nama_gejala' => $nama_gejala,
-            'cf_rule' => $cf_rule
+            'nama_penyakit' => $nama_penyakit,
+            'solusi' => $solusi
         ];
 
-        $this->db->where('id_gejala', $id_gejala);
-        $this->db->update('tblgejala', $data);
+        $this->db->where('id_penyakit', $id_penyakit);
+        $this->db->update('tblpenyakit', $data);
     }
 
-    function hapusGejala($id_gejala) {
-        $this->db->delete('tblgejala', ['id_gejala' => $id_gejala]);
+    function hapusPenyakit($id_penyakit) {
+        $this->db->delete('tblpenyakit', ['id_penyakit' => $id_penyakit]);
     }
 
-    function check_gejala ($id_gejala = '', $gejala) {
-        $this->db->where('nama_gejala', $gejala);
-        if ($id_gejala) {
-            $this->db->where_not_in('id_gejala', $id_gejala);
+    function check_penyakit ($id_penyakit = '', $nama_penyakit) {
+        $this->db->where('nama_penyakit', $nama_penyakit);
+        if ($id_penyakit) {
+            $this->db->where_not_in('id_penyakit', $id_penyakit);
         }
-        return $this->db->get('tblgejala')->num_rows();
+        return $this->db->get('tblpenyakit')->num_rows();
     }
 }

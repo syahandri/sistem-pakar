@@ -8,7 +8,7 @@ if ($('.judul').html() == 'Beranda') {
 	$('.gejala').addClass('active');
 } else if ($('.judul').html() == 'Data Penyakit') {
 	$('.penyakit').addClass('active');
-} else if ($('.judul').html() == 'Relasi Gejala dan Penyakit') {
+} else if ($('.judul').html() == 'Data Aturan') {
 	$('.relasi').addClass('active');
 }
 
