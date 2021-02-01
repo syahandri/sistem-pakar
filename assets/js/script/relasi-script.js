@@ -84,8 +84,8 @@ $(function () {
                         </button>
                     </div>`)
         } else {
-            console.log(id_penyakit)
-            console.log(id_gejala)
+            // console.log(id_penyakit)
+            // console.log(id_gejala)
         }
     })
 })
