@@ -79,7 +79,7 @@ $(function () {
 				type: "POST",
 				dataType: "JSON",
 				success: function (data) {
-					alert('Sukses!!!')
+					alert('Data berhasil dihapus.')
 					table.ajax.reload(null, false);
 				}
 			});
