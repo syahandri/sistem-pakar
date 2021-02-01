@@ -2,7 +2,7 @@
 
 class Penyakit_Model extends CI_Model {
 
-    // variabel pagination datatable
+    // variabel pagination datatables
     var $column_order = [null, 'id_penyakit', 'nama_penyakit', 'solusi', null];
     var $column_search = ['id_penyakit', 'nama_penyakit', 'solusi'];
     var $order = ['id_penyakit' => 'asc'];
