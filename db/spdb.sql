@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 01 Feb 2021 pada 07.23
+-- Waktu pembuatan: 16 Feb 2021 pada 06.10
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -150,15 +150,15 @@ CREATE TABLE `tblpenyakit` (
 --
 
 INSERT INTO `tblpenyakit` (`id_penyakit`, `nama_penyakit`, `solusi`) VALUES
-('P01', 'Lalat Penggorok Daun', 'Saat hama masih dalam tahap larva dapat menggunakan insektisida berbahan aktif Abamectin (demolish,agrimec) dengan dosis 1/2 sendok teh untuk 17 liter air.\r\n\r\nSaat hama telah berupa lalat buatlah jebakan lalat hama grandong dengan memasang botol bekas air mineral yang telah diolesi lem pada permukaannya, letakkan botol-botol plastik tersebut di sekitar lahan bawang merah.\r\n\r\nUntuk penggunaan pestisida, pilihlah jenis pestisida yang berbahan aktif Imidakloprit dengan dosis pemberian 25 gr / 2 sendok makan pestisida dicampur dengan 17 liter air. Atau dapat juga menggunakan Abamectin dengan dosis 1/2 sendok teh untuk ukuran air 17 liter. '),
-('P02', 'Ulat Bawang', 'Solusi Ulat Bawang'),
-('P03', 'Trips', ''),
-('P04', 'Ulat Tanah', ''),
-('P05', 'Layu Fusarium', ''),
-('P06', 'Bercak Ungu', ''),
-('P07', 'Antraknosa', ''),
-('P08', 'Virus Mozaik Bawang', ''),
-('P09', 'Bercak Daun', '');
+('P01', 'Lalat Penggorok Daun', 'Gunakan insektisida berbahan aktif imidakloprit dengan dosis 2 sendok makan 25 gram dan 2 liter.\r\n\r\nBisa juga gunakan Abamectin dengan dosis 1/2 sendok teh dan 17 liter.\r\n\r\nSedangkan untuk membasmi larvanya gunakan insektisida berbahan aktif Abamectin (Demolish, Agrimec) dengan dosis 1/2 sendok teh dan 17 liter.'),
+('P02', 'Ulat Bawang', 'Menggunakan insektisida seperti profenofos, spinosad, lufenuron, klorfluazuron, betasiflurin, atau insektisida lain yang sejenis.'),
+('P03', 'Trips', 'Dapat menggunakan insektisida dengan berbahan aktif Abamektin, Imidakloprid, Fipronil, Profenofos.'),
+('P04', 'Ulat Tanah', 'Gunakan insektisida berbahan aktif sipermetrin, fenvalerat, siromazin, BPMC, MIPC dan sebagainya.'),
+('P05', 'Layu Fusarium', 'Gunakan pupuk organik dengan penambahan agens hayati Gliocladium sp atau Thricoderma sp pada setiap lubang tanam serta perlakuan benih sebelum tanam dengan mencelupkan benih umbi maksimal 3 menit dalam larutan PGPR dosis 10 ml/liter air.'),
+('P06', 'Bercak Ungu', 'Gunakan fungisida yang berbahan aktif klorotalonil, mankoseb, promineb dan difenokonazol.'),
+('P07', 'Antraknosa', 'Menggunakan fungisida, misalnya Bion M, Czeb, Sorento, Score, Dakonil, atau Karibu.'),
+('P08', 'Virus Mozaik Bawang', 'Memusnahkan semua tanaman yang terserang ataupun tumbuhan inang dengan cara membakarnya.'),
+('P09', 'Bercak Daun', 'Dapat diatasi dengan cara sanitasi dan pembakaran sisa-sisa tanamana sakit, eradikasi selektif terhadap tanaman terserang, atau dapat menggunakan fungisida.');
 
 -- --------------------------------------------------------
 
@@ -174,12 +174,83 @@ CREATE TABLE `tblriwayat` (
   `faktor_kepastian` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `tblriwayat`
+-- Struktur dari tabel `tempgejala`
 --
 
-INSERT INTO `tblriwayat` (`id_riwayat`, `tanggal`, `nama_penyakit`, `solusi`, `faktor_kepastian`) VALUES
-(21, '2021-02-01', 'Lalat Penggorok Daun', 'Saat hama masih dalam tahap larva dapat menggunakan insektisida berbahan aktif Abamectin (demolish,agrimec) dengan dosis 1/2 sendok teh untuk 17 liter air.\r\n\r\nSaat hama telah berupa lalat buatlah jebakan lalat hama grandong dengan memasang botol bekas air mineral yang telah diolesi lem pada permukaannya, letakkan botol-botol plastik tersebut di sekitar lahan bawang merah.\r\n\r\nUntuk penggunaan pestisida, pilihlah jenis pestisida yang berbahan aktif Imidakloprit dengan dosis pemberian 25 gr / 2 sendok makan pestisida dicampur dengan 17 liter air. Atau dapat juga menggunakan Abamectin dengan dosis 1/2 sendok teh untuk ukuran air 17 liter. ', 58.454);
+CREATE TABLE `tempgejala` (
+  `id_gejala` varchar(5) NOT NULL,
+  `nilai_cf` float(5,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tempgejala`
+--
+
+INSERT INTO `tempgejala` (`id_gejala`, `nilai_cf`) VALUES
+('G06', 0.60),
+('G07', 1.00),
+('G09', 0.60),
+('G10', 0.20);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `temphasil`
+--
+
+CREATE TABLE `temphasil` (
+  `id_penyakit` varchar(5) NOT NULL,
+  `nilai_cf` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `temphasil`
+--
+
+INSERT INTO `temphasil` (`id_penyakit`, `nilai_cf`) VALUES
+('P03', 73.38),
+('P04', 36),
+('P08', 59.04);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `temppenyakit`
+--
+
+CREATE TABLE `temppenyakit` (
+  `id_penyakit` varchar(5) NOT NULL,
+  `id_gejala` varchar(5) NOT NULL,
+  `cf_rule` float(5,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `temppenyakit`
+--
+
+INSERT INTO `temppenyakit` (`id_penyakit`, `id_gejala`, `cf_rule`) VALUES
+('P03', 'G06', 0.80),
+('P03', 'G07', 0.20),
+('P03', 'G09', 0.60),
+('P04', 'G10', 1.00),
+('P08', 'G09', 0.60);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in struktur untuk tampilan `vcfkombinasi`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `vcfkombinasi` (
+`id_penyakit` varchar(5)
+,`id_gejala` varchar(5)
+,`cf_rule` float(5,2)
+,`nilai_cf` float(5,2)
+,`cf_kombinasi` double(19,2)
+);
 
 -- --------------------------------------------------------
 
@@ -193,6 +264,15 @@ CREATE TABLE `vdetailaturan` (
 ,`id_gejala` varchar(5)
 ,`nama_gejala` varchar(100)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `vcfkombinasi`
+--
+DROP TABLE IF EXISTS `vcfkombinasi`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vcfkombinasi`  AS  select `temppenyakit`.`id_penyakit` AS `id_penyakit`,`temppenyakit`.`id_gejala` AS `id_gejala`,`temppenyakit`.`cf_rule` AS `cf_rule`,`tempgejala`.`nilai_cf` AS `nilai_cf`,`temppenyakit`.`cf_rule` * `tempgejala`.`nilai_cf` AS `cf_kombinasi` from (`temppenyakit` join `tempgejala` on(`temppenyakit`.`id_gejala` = `tempgejala`.`id_gejala`)) where `temppenyakit`.`id_gejala` = `temppenyakit`.`id_gejala` ;
 
 -- --------------------------------------------------------
 
@@ -259,7 +339,7 @@ ALTER TABLE `tblaturan`
 -- AUTO_INCREMENT untuk tabel `tblriwayat`
 --
 ALTER TABLE `tblriwayat`
-  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
