@@ -18,10 +18,17 @@ class Diagnosa_Penyakit extends CI_Controller {
         $this->load->view('_templates/footer_user');
     }
 
+    // public function diagnosis() {
+    //     $data = $this->Diagnosa_penyakit_Model->diagnosis($this->input->post('id_gejala'),$this->input->post('nilai_cf'));
+    //     echo json_encode($data);
+
+    //     $this->Diagnosa_penyakit_Model->simpan_riwayat($data['nama_penyakit'], $data['nilai_cf'], $data['solusi']);
+    // }
+
     public function diagnosis() {
         $data = $this->Diagnosa_penyakit_Model->diagnosis($this->input->post('id_gejala'),$this->input->post('nilai_cf'));
         echo json_encode($data);
 
-        $this->Diagnosa_penyakit_Model->simpan_riwayat($data['nama_penyakit'], $data['nilai_cf'], $data['solusi']);
+        $this->Diagnosa_penyakit_Model->simpan_riwayat($data[0]['nama_penyakit'], $data[0]['nilai_cf'], $data[0]['solusi']);
     }
 }

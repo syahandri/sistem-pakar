@@ -54,9 +54,9 @@ $(function () {
 				success: function (data) {
 
 					$('#staticBackdrop').modal('show')
-					$('#info-penyakit').html(`<strong> Nama Penyakit : </strong>Berdasarkan gejala-gejala yang ada, penyakit-nya adalah <strong><span class="text-danger">` + data.nama_penyakit + `</span></strong>`)
-					$('#info-cf').html(`<strong> Nilai Kepastian : </strong> <strong><span class="text-danger">` + data.nilai_cf + '%' + `</span></strong>`)
-					$('#info-solusi').html(`<strong> Solusi Untuk Mengatasi Penyakit : </strong><strong><span class="text-danger">` + data.solusi + `</span></strong>`)
+					$('#info-penyakit').html(`<strong> Nama Penyakit : </strong>Berdasarkan gejala-gejala yang ada, penyakit-nya adalah <strong><span class="text-danger">` + data[0].nama_penyakit + `</span></strong>`)
+					$('#info-cf').html(`<strong> Nilai Kepastian : </strong> <strong><span class="text-danger">` + data[0].nilai_cf + '%' + `</span></strong>`)
+					$('#info-solusi').html(`<strong> Solusi Untuk Mengatasi Penyakit : </strong><strong><span class="text-danger">` + data[0].solusi + `</span></strong>`)
 				}
 			})
 		} else {
