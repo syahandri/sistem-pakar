@@ -75,3 +75,28 @@
 	</div>
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
+
+<!-- Modal Detail Penyakit-->
+<div class="modal fade" id="detail-penyakit" data-backdrop="static" data-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-center w-100">Detail Penyakit</h5>
+				
+			</div>
+			<div class="modal-body">
+				<!-- <div id="info-gambar" class="text-center"><img src=<?= base_url('assets/img/upload/admin.svg'); ?> width="25%"></div> -->
+				<!-- <hr> -->
+				<div id="id_penyakit"></div>
+				<hr>
+				<div id="nama_penyakit"></div>
+				<hr>
+				<div id="solusi_penyakit"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Selesai</button>
+			</div>
+		</div>
+	</div>
+</div>

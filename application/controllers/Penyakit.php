@@ -34,7 +34,7 @@ class Penyakit extends CI_Controller {
             $row[] = ++$no;
             $row[] = $penyakit->id_penyakit;
             $row[] = $penyakit->nama_penyakit;
-            $row[] = $solusi . '...' . '<a href="" id="'. $penyakit->id_penyakit .'"> Selengkapnya </a>';
+            $row[] = $solusi . '...';
 
             //add action in table
             $row[] = '      
@@ -159,5 +159,10 @@ class Penyakit extends CI_Controller {
         $this->Penyakit_Model->hapusPenyakit($this->input->post('id_penyakit'));
         echo json_encode($data = ['msg' => 'Data berhasil dihapus.']);
 
+    }
+
+    public function detailPenyakit() {
+        $data = $this->Penyakit_Model->detailPenyakit($this->input->post('id_penyakit'));
+        echo json_encode($data);
     }
 }

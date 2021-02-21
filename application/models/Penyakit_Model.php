@@ -97,4 +97,9 @@ class Penyakit_Model extends CI_Model {
         return $this->db->get('tblpenyakit')->num_rows();
     }
 
+    public function detailPenyakit($id_penyakit) {
+        $this->db->select('*');
+        $this->db->where('id_penyakit', $id_penyakit);
+        return $this->db->get('tblpenyakit')->result_array();
+    }
 }

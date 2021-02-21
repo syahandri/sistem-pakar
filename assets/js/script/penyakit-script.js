@@ -163,6 +163,26 @@ $(function() {
 		}
     })
 
+    $('#table-penyakit tbody').on('click', 'tr', function() {
+        let data = table.row(this).data();
+        let id = data[1]
+
+        $.ajax({
+            url: "Penyakit/detailPenyakit/",
+            data: {
+                id_penyakit: id
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                $('#detail-penyakit').modal('show')
+                $('#id_penyakit').html(`<strong>Kode Penyakit : </strong>` + data[0].id_penyakit)
+                $('#nama_penyakit').html(`<strong>Nama Penyakit : </strong>` +data[0].nama_penyakit)
+                $('#solusi_penyakit').html(`<strong>Solusi : </strong>` + data[0].solusi)
+            }
+        });
+    })
+
     $('#form-penyakit').on('submit', function(e) {
         e.preventDefault()
         simpan()
