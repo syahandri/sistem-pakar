@@ -24,7 +24,10 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/responsive.dataTables.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/fixedHeader.bootstrap4.min.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/fixedColumns.bootstrap4.min.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/fixedColumns.bootstrap4.min.css">
+	
+	<!-- my style -->
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/myStyle.css">
 
 </head>
 
