@@ -28,21 +28,21 @@ class Penyakit extends CI_Controller {
 
         foreach ($list as $penyakit) {
 
-            $solusi = substr($penyakit->solusi, 0, 51);
+            // $solusi = substr($penyakit->solusi, 0, 51);
 
             $row = [];
             $row[] = ++$no;
             $row[] = $penyakit->id_penyakit;
             $row[] = $penyakit->nama_penyakit;
-            $row[] = $solusi . '...';
+            $row[] = $penyakit->solusi;
 
             //add action in table
-            $row[] = '      
+            $row[] = '
             <button type  = "button" id = "' . $penyakit->id_penyakit . '"class = "btn btn-sm update-penyakit">
             <i class = "fas fa-pen" style = "color:blue"></i> Edit
             </button>
             </div>
-
+            <hr>
             <button type  = "button" id = "' . $penyakit->id_penyakit . '"class = "btn btn-sm delete-penyakit">
             <i class = "fas fa-trash" style = "color:red"></i> Hapus
             </button>
