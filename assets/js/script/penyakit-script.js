@@ -143,15 +143,15 @@ $(function() {
     }
 
     $(document).on('click', '.delete-penyakit', function() {
-        let id = $(this).attr('id');
-        
+        let id = $(this).attr('id')
+
         let warn = confirm('Yakin data akan dihapus?')
 		if (warn == true) {
 
 			$.ajax({
 				url: "Penyakit/hapusPenyakit/",
 				data: {
-					id_penyakit: id
+                    id_penyakit: id
 				},
 				type: "POST",
 				dataType: "JSON",

@@ -89,6 +89,10 @@ class Penyakit_Model extends CI_Model {
         $this->db->delete('tblpenyakit', ['id_penyakit' => $id_penyakit]);
     }
 
+    public function hapusRelasi($id_penyakit) {
+        $this->db->delete('tblaturan', ['id_penyakit' => $id_penyakit]);
+    }
+
     public function check_penyakit ($id_penyakit = '', $nama_penyakit) {
         $this->db->where('nama_penyakit', $nama_penyakit);
         if ($id_penyakit) {

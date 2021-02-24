@@ -38,13 +38,13 @@ class Penyakit extends CI_Controller {
 
             //add action in table
             $row[] = '
-            <button type  = "button" id = "' . $penyakit->id_penyakit . '"class = "btn btn-sm update-penyakit">
-            <i class = "fas fa-pen" style = "color:blue"></i> Edit
+            <button type="button" id="' . $penyakit->id_penyakit . '" class="btn btn-sm update-penyakit">
+            <i class="fas fa-pen" style="color:blue"></i> Edit
             </button>
             </div>
             <hr>
-            <button type  = "button" id = "' . $penyakit->id_penyakit . '"class = "btn btn-sm delete-penyakit">
-            <i class = "fas fa-trash" style = "color:red"></i> Hapus
+            <button type="button" id="' . $penyakit->id_penyakit . '" class="btn btn-sm delete-penyakit">
+            <i class="fas fa-trash" style="color:red"></i> Hapus
             </button>
             </div>
             ';
@@ -156,9 +156,9 @@ class Penyakit extends CI_Controller {
     }
 
     public function hapusPenyakit() {
+        $this->Penyakit_Model->hapusRelasi($this->input->post('id_penyakit'));
         $this->Penyakit_Model->hapusPenyakit($this->input->post('id_penyakit'));
         echo json_encode($data = ['msg' => 'Data berhasil dihapus.']);
-
     }
 
     public function detailPenyakit() {
