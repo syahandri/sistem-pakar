@@ -154,6 +154,7 @@ class Gejala extends CI_Controller
     }
 
     public function hapusGejala() {
+        $this->Gejala_Model->hapusRelasi($this->input->post('id_gejala'));
         $this->Gejala_Model->hapusGejala($this->input->post('id_gejala'));
         echo json_encode($data = ['msg' => 'Data berhasil dihapus.']);
 

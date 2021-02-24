@@ -88,6 +88,10 @@ class Gejala_Model extends CI_Model {
         $this->db->delete('tblgejala', ['id_gejala' => $id_gejala]);
     }
 
+    function hapusRelasi($id_gejala) {
+        $this->db->delete('tblaturan', ['id_gejala' => $id_gejala]);
+    }
+
     function check_gejala ($id_gejala = '', $gejala) {
         $this->db->where('nama_gejala', $gejala);
         if ($id_gejala) {
