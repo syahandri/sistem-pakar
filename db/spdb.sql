@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 16 Feb 2021 pada 06.10
+-- Waktu pembuatan: 24 Feb 2021 pada 03.57
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -57,17 +57,10 @@ CREATE TABLE `tblaturan` (
 --
 
 INSERT INTO `tblaturan` (`id_aturan`, `id_penyakit`, `id_gejala`) VALUES
-(1, 'P01', 'G01'),
-(2, 'P01', 'G02'),
-(3, 'P01', 'G03'),
-(4, 'P01', 'G04'),
-(5, 'P02', 'G03'),
-(6, 'P02', 'G05'),
 (7, 'P03', 'G06'),
 (8, 'P03', 'G07'),
 (9, 'P03', 'G08'),
 (10, 'P03', 'G09'),
-(11, 'P04', 'G10'),
 (12, 'P05', 'G11'),
 (13, 'P05', 'G12'),
 (14, 'P05', 'G13'),
@@ -77,7 +70,6 @@ INSERT INTO `tblaturan` (`id_aturan`, `id_penyakit`, `id_gejala`) VALUES
 (18, 'P06', 'G16'),
 (19, 'P06', 'G17'),
 (20, 'P06', 'G18'),
-(21, 'P07', 'G01'),
 (22, 'P07', 'G19'),
 (23, 'P07', 'G20'),
 (24, 'P08', 'G09'),
@@ -106,16 +98,10 @@ CREATE TABLE `tblgejala` (
 --
 
 INSERT INTO `tblgejala` (`id_gejala`, `nama_gejala`, `cf_rule`) VALUES
-('G01', 'Terdapat bercak putih pada daun', 0.2),
-('G02', 'Terdapat liang kerokan larva yang berkelok pada daun', 0.6),
-('G03', 'Daun mengering', 0.4),
-('G04', 'Daun berwarna cokelat sepeti terbakar', 0.2),
-('G05', 'Terdapat bercak putih transparan pada daun', 0.2),
 ('G06', 'Daun terkulai', 0.8),
 ('G07', 'Daun berwarna putih perak', 0.2),
 ('G08', 'Daun berubah kecoklatan dan berbintik hitam', 0.4),
 ('G09', 'Umbi bawang kecil', 0.6),
-('G10', 'Leher batang terpotong-potong', 1),
 ('G11', 'Daun menguning', 0.2),
 ('G12', 'Daun terpelintir dan mudah tercabut', 0.6),
 ('G13', 'Umbi membusuk', 0.2),
@@ -150,10 +136,7 @@ CREATE TABLE `tblpenyakit` (
 --
 
 INSERT INTO `tblpenyakit` (`id_penyakit`, `nama_penyakit`, `solusi`) VALUES
-('P01', 'Lalat Penggorok Daun', 'Gunakan insektisida berbahan aktif imidakloprit dengan dosis 2 sendok makan 25 gram dan 2 liter.\r\n\r\nBisa juga gunakan Abamectin dengan dosis 1/2 sendok teh dan 17 liter.\r\n\r\nSedangkan untuk membasmi larvanya gunakan insektisida berbahan aktif Abamectin (Demolish, Agrimec) dengan dosis 1/2 sendok teh dan 17 liter.'),
-('P02', 'Ulat Bawang', 'Menggunakan insektisida seperti profenofos, spinosad, lufenuron, klorfluazuron, betasiflurin, atau insektisida lain yang sejenis.'),
 ('P03', 'Trips', 'Dapat menggunakan insektisida dengan berbahan aktif Abamektin, Imidakloprid, Fipronil, Profenofos.'),
-('P04', 'Ulat Tanah', 'Gunakan insektisida berbahan aktif sipermetrin, fenvalerat, siromazin, BPMC, MIPC dan sebagainya.'),
 ('P05', 'Layu Fusarium', 'Gunakan pupuk organik dengan penambahan agens hayati Gliocladium sp atau Thricoderma sp pada setiap lubang tanam serta perlakuan benih sebelum tanam dengan mencelupkan benih umbi maksimal 3 menit dalam larutan PGPR dosis 10 ml/liter air.'),
 ('P06', 'Bercak Ungu', 'Gunakan fungisida yang berbahan aktif klorotalonil, mankoseb, promineb dan difenokonazol.'),
 ('P07', 'Antraknosa', 'Menggunakan fungisida, misalnya Bion M, Czeb, Sorento, Score, Dakonil, atau Karibu.'),
@@ -174,6 +157,15 @@ CREATE TABLE `tblriwayat` (
   `faktor_kepastian` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tblriwayat`
+--
+
+INSERT INTO `tblriwayat` (`id_riwayat`, `tanggal`, `nama_penyakit`, `solusi`, `faktor_kepastian`) VALUES
+(26, '2021-02-21', 'Bercak Ungu', 'Gunakan fungisida yang berbahan aktif klorotalonil, mankoseb, promineb dan difenokonazol.', 40.16),
+(27, '2021-02-24', 'Trips', 'Dapat menggunakan insektisida dengan berbahan aktif Abamektin, Imidakloprid, Fipronil, Profenofos.', 82.74),
+(28, '2021-02-24', 'Virus Mozaik Bawang', 'Memusnahkan semua tanaman yang terserang ataupun tumbuhan inang dengan cara membakarnya.', 59.04);
+
 -- --------------------------------------------------------
 
 --
@@ -190,10 +182,9 @@ CREATE TABLE `tempgejala` (
 --
 
 INSERT INTO `tempgejala` (`id_gejala`, `nilai_cf`) VALUES
-('G06', 0.60),
-('G07', 1.00),
-('G09', 0.60),
-('G10', 0.20);
+('G20', 0.60),
+('G23', 0.60),
+('G25', 0.20);
 
 -- --------------------------------------------------------
 
@@ -211,9 +202,9 @@ CREATE TABLE `temphasil` (
 --
 
 INSERT INTO `temphasil` (`id_penyakit`, `nilai_cf`) VALUES
-('P03', 73.38),
-('P04', 36),
-('P08', 59.04);
+('P07', 42.24),
+('P08', 59.04),
+('P09', 38.56);
 
 -- --------------------------------------------------------
 
@@ -232,11 +223,10 @@ CREATE TABLE `temppenyakit` (
 --
 
 INSERT INTO `temppenyakit` (`id_penyakit`, `id_gejala`, `cf_rule`) VALUES
-('P03', 'G06', 0.80),
-('P03', 'G07', 0.20),
-('P03', 'G09', 0.60),
-('P04', 'G10', 1.00),
-('P08', 'G09', 0.60);
+('P07', 'G20', 0.40),
+('P08', 'G23', 0.60),
+('P09', 'G23', 0.60),
+('P09', 'G25', 0.20);
 
 -- --------------------------------------------------------
 
@@ -339,7 +329,7 @@ ALTER TABLE `tblaturan`
 -- AUTO_INCREMENT untuk tabel `tblriwayat`
 --
 ALTER TABLE `tblriwayat`
-  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
