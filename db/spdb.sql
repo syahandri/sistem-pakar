@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 24 Feb 2021 pada 03.57
+-- Waktu pembuatan: 13 Jul 2021 pada 18.04
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -57,29 +57,29 @@ CREATE TABLE `tblaturan` (
 --
 
 INSERT INTO `tblaturan` (`id_aturan`, `id_penyakit`, `id_gejala`) VALUES
-(7, 'P03', 'G06'),
+(1, 'P01', 'G02'),
+(2, 'P01', 'G03'),
+(3, 'P01', 'G04'),
+(4, 'P02', 'G05'),
+(5, 'P02', 'G06'),
+(6, 'P02', 'G07'),
+(7, 'P02', 'G08'),
 (8, 'P03', 'G07'),
-(9, 'P03', 'G08'),
-(10, 'P03', 'G09'),
-(12, 'P05', 'G11'),
-(13, 'P05', 'G12'),
-(14, 'P05', 'G13'),
-(15, 'P05', 'G14'),
-(16, 'P06', 'G13'),
-(17, 'P06', 'G15'),
-(18, 'P06', 'G16'),
-(19, 'P06', 'G17'),
-(20, 'P06', 'G18'),
-(22, 'P07', 'G19'),
-(23, 'P07', 'G20'),
-(24, 'P08', 'G09'),
-(25, 'P08', 'G21'),
-(26, 'P08', 'G22'),
-(27, 'P08', 'G23'),
-(28, 'P08', 'G24'),
-(29, 'P09', 'G23'),
-(30, 'P09', 'G25'),
-(31, 'P09', 'G26');
+(9, 'P03', 'G09'),
+(10, 'P03', 'G10'),
+(11, 'P03', 'G11'),
+(12, 'P03', 'G12'),
+(13, 'P04', 'G01'),
+(14, 'P04', 'G13'),
+(15, 'P04', 'G14'),
+(16, 'P05', 'G04'),
+(17, 'P05', 'G15'),
+(18, 'P05', 'G16'),
+(19, 'P05', 'G17'),
+(20, 'P05', 'G18'),
+(21, 'P06', 'G17'),
+(22, 'P06', 'G19'),
+(23, 'P06', 'G20');
 
 -- --------------------------------------------------------
 
@@ -98,26 +98,26 @@ CREATE TABLE `tblgejala` (
 --
 
 INSERT INTO `tblgejala` (`id_gejala`, `nama_gejala`, `cf_rule`) VALUES
-('G06', 'Daun terkulai', 0.8),
-('G07', 'Daun berwarna putih perak', 0.2),
-('G08', 'Daun berubah kecoklatan dan berbintik hitam', 0.4),
-('G09', 'Umbi bawang kecil', 0.6),
-('G11', 'Daun menguning', 0.2),
-('G12', 'Daun terpelintir dan mudah tercabut', 0.6),
-('G13', 'Umbi membusuk', 0.2),
-('G14', 'Tanaman mati dimulai dari ujung daun menjalar hingga ke bagian bawah\r\n', 0.8),
-('G15', 'Terdapat bercak melekuk pada daun berwarna putih atau kelabu', 0.2),
-('G16', 'Terdapat bercak seperti cincin berwarna ungu kemerah-merahan', 0.4),
-('G17', 'Ujung daun mengering bahkan patah', 0.2),
-('G18', 'Umbi kering berwarna gelap', 0.4),
-('G19', 'Pangkal daun bawang mengecil', 0.6),
-('G20', 'Terdapat spora berwarna merah muda', 0.4),
-('G21', 'Tanaman tumbuh kerdil', 0.2),
-('G22', 'Daun bawang kecil', 0.2),
-('G23', 'Warna daun belang', 0.6),
-('G24', 'Pertumbuhan daun terpilin', 0.8),
-('G25', 'Banyak bercak pada ujung daun', 0.2),
-('G26', 'Terdapat bercak berwarna cokelat pada daun', 0.2);
+('G01', 'Bercak putih pada daun', 0.2),
+('G02', 'Daun berwarna putih perak', 0.6),
+('G03', 'Daun berubah kecoklatan dan berbintik hitam', 0.4),
+('G04', 'Umbi bawang kecil', 0.2),
+('G05', 'Daun menguning', 0.2),
+('G06', 'Daun terpelintir dan mudah tercabut', 0.8),
+('G07', 'Umbi membusuk', 0.2),
+('G08', 'Tanaman mati dimulai dari ujung daun menjalar hingga ke bagian bawah', 0.4),
+('G09', 'Bercak melekuk pada daun berwarna putih atau kelabu', 0.6),
+('G10', 'Bercak seperti cincin berwarna ungu kemerah-merahan', 0.2),
+('G11', 'Ujung daun mengering bahkan patah', 0.4),
+('G12', 'Umbi kering berwarna gelap', 0.2),
+('G13', 'Pangkal daun bawang mengecil', 0.8),
+('G14', 'Spora berwarna merah muda', 0.6),
+('G15', 'Tanaman tumbuh kerdil', 0.2),
+('G16', 'Daun bawang kecil', 0.4),
+('G17', 'Warna daun belang', 0.2),
+('G18', 'Pertumbuhan daun terpilin', 0.4),
+('G19', 'Banyak bercak pada ujung daun', 0.6),
+('G20', 'Bercak berwarna cokelat pada daun', 0.4);
 
 -- --------------------------------------------------------
 
@@ -136,12 +136,12 @@ CREATE TABLE `tblpenyakit` (
 --
 
 INSERT INTO `tblpenyakit` (`id_penyakit`, `nama_penyakit`, `solusi`) VALUES
-('P03', 'Trips', 'Dapat menggunakan insektisida dengan berbahan aktif Abamektin, Imidakloprid, Fipronil, Profenofos.'),
-('P05', 'Layu Fusarium', 'Gunakan pupuk organik dengan penambahan agens hayati Gliocladium sp atau Thricoderma sp pada setiap lubang tanam serta perlakuan benih sebelum tanam dengan mencelupkan benih umbi maksimal 3 menit dalam larutan PGPR dosis 10 ml/liter air.'),
-('P06', 'Bercak Ungu', 'Gunakan fungisida yang berbahan aktif klorotalonil, mankoseb, promineb dan difenokonazol.'),
-('P07', 'Antraknosa', 'Menggunakan fungisida, misalnya Bion M, Czeb, Sorento, Score, Dakonil, atau Karibu.'),
-('P08', 'Virus Mozaik Bawang', 'Memusnahkan semua tanaman yang terserang ataupun tumbuhan inang dengan cara membakarnya.'),
-('P09', 'Bercak Daun', 'Dapat diatasi dengan cara sanitasi dan pembakaran sisa-sisa tanamana sakit, eradikasi selektif terhadap tanaman terserang, atau dapat menggunakan fungisida.');
+('P01', 'Trips', 'Dapat menggunakan insektisida dengan berbahan aktif Abamektin, Imidakloprid, Fipronil, Profenofos.'),
+('P02', 'Layu Fusarium', 'Gunakan pupuk organik dengan penambahan agens hayati Gliocladium sp atau Thricoderma sp pada setiap lubang tanam serta perlakuan benih sebelum tanam dengan mencelupkan benih umbi maksimal 3 menit dalam larutan PGPR dosis 10 ml/liter air.'),
+('P03', 'Bercak Ungu', 'Gunakan fungisida yang berbahan aktif klorotalonil, mankoseb, promineb dan difenokonazol.'),
+('P04', 'Antraknosa', 'Menggunakan fungisida, misalnya Bion M, Czeb, Sorento, Score, Dakonil, atau Karibu.'),
+('P05', 'Virus Mozaik Bawang', 'Memusnahkan semua tanaman yang terserang ataupun tumbuhan inang dengan cara membakarnya.'),
+('P06', 'Bercak Daun', 'Dapat diatasi dengan cara sanitasi dan pembakaran sisa-sisa tanamana sakit, eradikasi selektif terhadap tanaman terserang.\r\nAtau dapat menggunakan fungisida.');
 
 -- --------------------------------------------------------
 
@@ -162,9 +162,7 @@ CREATE TABLE `tblriwayat` (
 --
 
 INSERT INTO `tblriwayat` (`id_riwayat`, `tanggal`, `nama_penyakit`, `solusi`, `faktor_kepastian`) VALUES
-(26, '2021-02-21', 'Bercak Ungu', 'Gunakan fungisida yang berbahan aktif klorotalonil, mankoseb, promineb dan difenokonazol.', 40.16),
-(27, '2021-02-24', 'Trips', 'Dapat menggunakan insektisida dengan berbahan aktif Abamektin, Imidakloprid, Fipronil, Profenofos.', 82.74),
-(28, '2021-02-24', 'Virus Mozaik Bawang', 'Memusnahkan semua tanaman yang terserang ataupun tumbuhan inang dengan cara membakarnya.', 59.04);
+(32, '2021-07-13', 'Trips', 'Dapat menggunakan insektisida dengan berbahan aktif Abamektin, Imidakloprid, Fipronil, Profenofos.', 56.48);
 
 -- --------------------------------------------------------
 
@@ -182,9 +180,10 @@ CREATE TABLE `tempgejala` (
 --
 
 INSERT INTO `tempgejala` (`id_gejala`, `nilai_cf`) VALUES
-('G20', 0.60),
-('G23', 0.60),
-('G25', 0.20);
+('G01', 1.00),
+('G02', 0.60),
+('G03', 0.80),
+('G06', 0.40);
 
 -- --------------------------------------------------------
 
@@ -202,9 +201,9 @@ CREATE TABLE `temphasil` (
 --
 
 INSERT INTO `temphasil` (`id_penyakit`, `nilai_cf`) VALUES
-('P07', 42.24),
-('P08', 59.04),
-('P09', 38.56);
+('P01', 56.48),
+('P02', 53.76),
+('P04', 36);
 
 -- --------------------------------------------------------
 
@@ -223,10 +222,10 @@ CREATE TABLE `temppenyakit` (
 --
 
 INSERT INTO `temppenyakit` (`id_penyakit`, `id_gejala`, `cf_rule`) VALUES
-('P07', 'G20', 0.40),
-('P08', 'G23', 0.60),
-('P09', 'G23', 0.60),
-('P09', 'G25', 0.20);
+('P01', 'G02', 0.60),
+('P01', 'G03', 0.40),
+('P02', 'G06', 0.80),
+('P04', 'G01', 0.20);
 
 -- --------------------------------------------------------
 
@@ -329,7 +328,7 @@ ALTER TABLE `tblaturan`
 -- AUTO_INCREMENT untuk tabel `tblriwayat`
 --
 ALTER TABLE `tblriwayat`
-  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
